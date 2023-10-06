@@ -6,7 +6,8 @@
 
 	<session-factory>
 
-		
+		<mapping class="nl.delphinity.todoapp.domain.Account"/>
+		<mapping class="nl.delphinity.todoapp.domain.Todo"/>
 
 	</session-factory>
 
