@@ -1,6 +1,7 @@
 package nl.delphinity.todoapp.domain;
 
 import jakarta.persistence.*;
+import nl.delphinity.todoapp.repository.factories.DAOFactory;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -134,6 +135,7 @@ public class Account {
 
         todo.setAccount(this);
         todos.add(todo);
+        DAOFactory.getFactory().getTodoDAO().save(todo);
 
     }
 
