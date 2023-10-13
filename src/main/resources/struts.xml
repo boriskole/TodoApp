@@ -19,6 +19,14 @@
 		<action name="register">
 			<result>content/page/register.jsp</result>
 		</action>
+
+		<action name="logout" class="nl.delphinity.todoapp.controller.account.LogoutAction" method="logout">
+			<result type="redirect">login</result>
+		</action>
+
+		<action name="todos" class="nl.delphinity.todoapp.controller.todos.TodosAction" method="todos">
+			<result>content/page/todos.jsp</result>
+		</action>
 		
 		<action name="doLogin" class="nl.delphinity.todoapp.controller.account.LoginAction" method="login">
 			<result name="success" type="redirect">todos</result>
