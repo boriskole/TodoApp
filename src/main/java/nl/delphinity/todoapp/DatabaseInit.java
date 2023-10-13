@@ -1,5 +1,6 @@
 package nl.delphinity.todoapp;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import nl.delphinity.todoapp.domain.Account;
 import nl.delphinity.todoapp.domain.Todo;
 import nl.delphinity.todoapp.repository.factories.DAOFactories;
@@ -13,7 +14,14 @@ public class DatabaseInit {
         DAOFactory.setFactory(DAOFactories.HIBERNATE.getFactory());
         HibernateSessionManager.init();
 
-        Account account = new Account("user@example.com", "user");
+        Account account = new Account(
+                "user@example.com",
+                "User",
+                BCrypt.withDefaults().hashToString(
+                        12,
+                        "user".toCharArray()
+                )
+        );
 
         Todo t1 = new Todo("Buy milk");
         Todo t2 = new Todo("Buy bread");

@@ -11,6 +11,7 @@ public class AccountDAO extends GenericDAO<Account, Long> implements IAccountDAO
     public Optional<Account> findByEmail(String email) {
         getSession().beginTransaction();
         var result = getSession().createQuery("FROM Account WHERE email = :email", Account.class)
+                .setParameter("email", email)
                 .uniqueResultOptional();
         getSession().getTransaction().commit();
         return result;

@@ -8,7 +8,44 @@
 
 	<package name="default" extends="struts-default" namespace="/">
 
+		<action name="">
+			<result type="redirect">login</result>
+		</action>
+
+		<action name="login">
+			<result>content/page/login.jsp</result>
+		</action>
+
+		<action name="register">
+			<result>content/page/register.jsp</result>
+		</action>
 		
+		<action name="doLogin" class="nl.delphinity.todoapp.controller.account.LoginAction" method="login">
+			<result name="success" type="redirect">todos</result>
+			<result name="wrong" type="redirect">
+				<param name="location">login</param>
+				<param name="status">1 </param>
+			</result>
+			<result name="error" type="redirect">login</result>
+		</action>
+
+		<action name="doRegister" class="nl.delphinity.todoapp.controller.account.RegisterAction" method="register">
+
+			<result name="success" type="redirect">
+				<param name="location">register</param>
+				<param name="status">1</param>
+			</result>
+
+			<result name="taken" type="redirect">
+				<param name="location">register</param>
+				<param name="status">2</param>
+			</result>
+
+			<result name="error" type="redirect">
+				register
+			</result>
+
+		</action>
 
 	</package>
 
