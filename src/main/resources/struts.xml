@@ -59,6 +59,10 @@
 			<result type="redirect">todos</result>
 		</action>
 
+		<action name="addTodo" class="nl.delphinity.todoapp.controller.todos.CreateTodoAction" method="create">
+			<result type="redirect">todos</result>
+		</action>
+
 	</package>
 
 </struts>	
