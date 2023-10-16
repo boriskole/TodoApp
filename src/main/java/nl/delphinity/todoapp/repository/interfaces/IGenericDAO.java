@@ -18,4 +18,6 @@ public interface IGenericDAO<T, ID extends Serializable> {
 
     void deleteById(ID id);
 
+    void merge(T entity);
+
 }

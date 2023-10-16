@@ -20,7 +20,10 @@ public class TodosAction implements SessionAware {
 
         account = (Account) session.get("account");
 
-        todos = account.getTodos().stream()
+        todos = DAOFactory.getFactory()
+                .getTodoDAO()
+                .findAllByAccount(account)
+                .stream()
                 .filter(todo -> !todo.getCompleted())
                 .collect(Collectors.toSet());
 

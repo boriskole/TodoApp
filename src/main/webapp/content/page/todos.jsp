@@ -13,16 +13,16 @@
 
             <div class="row">
 
-                <div class="col"></div>
+                <div class="col-lg"></div>
 
-                <div class="col text-center">
+                <div class="col-lg text-center">
 
                     <h1>Welcome back, <s:property value="account.firstName"/>!</h1>
                     <h3><s:property value="status"/></h3>
 
                 </div>
 
-                <div class="col text-center">
+                <div class="col-lg text-center">
                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTodo">
                         <i class="bi bi-plus-square-fill"></i>
                     </button>
@@ -86,7 +86,7 @@
                                 <label for="description" class="col-form-label form-label-group">Description</label>
                             </div>
 
-                            <input type="submit" value="Submit" class="btn btn-primary form-control mt-4">
+                            <input type="submit" value="Submit" class="btn btn-primary form-control mt-3">
 
                         </form>
 
