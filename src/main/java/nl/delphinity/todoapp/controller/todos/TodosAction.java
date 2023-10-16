@@ -7,21 +7,22 @@ import org.apache.struts2.action.SessionAware;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TodosAction implements SessionAware {
 
-    private Set<Todo> todos;
     private Account account;
     private String status;
     private Map<String, Object> session;
+    private Set<Todo> todos;
 
     public String todos() {
 
         account = (Account) session.get("account");
 
-        todos = DAOFactory.getFactory()
-                .getTodoDAO()
-                .findAllByAccount(account);
+        todos = account.getTodos().stream()
+                .filter(todo -> !todo.getCompleted())
+                .collect(Collectors.toSet());
 
         if (todos.isEmpty())
             status = "Looks like you're all caught up on your tasks.";
@@ -30,14 +31,6 @@ public class TodosAction implements SessionAware {
 
         return "success";
 
-    }
-
-    public Set<Todo> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(Set<Todo> todos) {
-        this.todos = todos;
     }
 
     public Account getAccount() {
@@ -54,6 +47,14 @@ public class TodosAction implements SessionAware {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Set<Todo> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(Set<Todo> todos) {
+        this.todos = todos;
     }
 
     @Override
